@@ -92,13 +92,14 @@ $http.requestStart = function(options) {
 	return options;
 }
 //请求结束
-$http.requestEnd = function(options, resolve) {
+$http.requestEnd = function(options, resolve = {}) {
 	//判断当前接口是否需要加载动画
 	if (options.load) {
 		// 关闭加载动画
 		store.commit("setLoadingShow", false);
 	}
-	if (resolve.errMsg && resolve.statusCode && resolve.statusCode > 300) {
+	const { errMsg, statusCode } = resolve
+	if (errMsg && statusCode && statusCode > 300) {
 		setTimeout(() => {
 			uni.showToast({
 				title: "网络错误，请检查一下网络",
