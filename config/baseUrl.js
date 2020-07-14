@@ -2,7 +2,7 @@ let baseUrl = "";
 let socketUrl = "";
 if (process.env.NODE_ENV === 'development') {
 	// 开发环境
-	baseUrl = "http://ygapi.5kafa.com/";
+	baseUrl = "http://localhost:8080/";
 	socketUrl = "ws://localhost:8001/";
 } else if (process.env.NODE_ENV === 'production') {
 	// 生产环境
