@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<nav-bar backState="2000" title="首页"></nav-bar>
+		<view>{{text}}</view>
 		<!-- 公共组件-每个页面必须引入 -->
 		<public-module></public-module>
 	</view>
@@ -10,7 +11,7 @@
 export default {
 	data() {
 		return {
-			
+			text: ''
 		};
 	},
 	onLoad(e) {
@@ -33,7 +34,7 @@ export default {
 				{ test: '111' },
 				{ load: false },
 			).then(data => {
-				console.log(data)
+				this.text = JSON.stringify(data)
 			});
 		}
 	},
