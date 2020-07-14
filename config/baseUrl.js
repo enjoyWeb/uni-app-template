@@ -10,6 +10,8 @@ if (process.env.NODE_ENV === 'development') {
 	socketUrl = "ws://localhost:8001/";
 }
 const courtConfig = {
+	accessKey: '11111',
+	secretKey: '22222',
 	//微信小程序appid=
 	//微信公众号APPID
 	publicAppId: "",

@@ -2,6 +2,7 @@ import $http from '@/config/requestConfig'
 import store from '@/config/store';
 import base from '@/config/baseUrl';
 import { getAppWxLatLon } from '@/plugins/utils';
+import { sha256 } from 'js-sha256';
 // #ifdef H5
 import { getLatLonH5, publicShareFun, wxPublicPay, getBrowser,appMutual } from '@/config/html5Utils';
 // 公众号分享
@@ -157,6 +158,26 @@ export const getLatLon = function(tip){
 		getAppWxLatLon(successProcess,errProcess);
 		// #endif
 	});
+}
+
+export const formatUrl = (url) => {
+	const timestamp = Math.round(new Date().getTime()/1000).toString();
+	const {
+		accessKey,
+		secretKey
+	} = base
+	const params = {
+		accessKey,
+		secretKey,
+		timestamp
+	};
+	let str = ""
+	//忽略了排序
+	for(let i in params){
+		str += i + params[i]
+	}
+	const sign = sha256(str) //要加密的密码
+	return `${url}?accessKey=${accessKey}&secretKey=${secretKey}&timestamp=${timestamp}&sign=${sign}`
 }
 
 

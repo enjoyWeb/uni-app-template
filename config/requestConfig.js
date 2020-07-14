@@ -1,6 +1,7 @@
 import request from "@/plugins/request";
 import store from '@/config/store';
 import base from '@/config/baseUrl';
+import { formatUrl } from '@/config/utils'
 // #ifdef H5
 import {
 	h5Login
@@ -55,6 +56,9 @@ $http.getQnToken = function(callback){
 //请求开始拦截器
 $http.requestStart = function(options) {
 	console.log("请求开始", options);
+	if (options.url) {
+		options.url = formatUrl(options.url)
+	}
 	if (options.load) {
 		//打开加载动画
 		store.commit("setLoadingShow", true);
