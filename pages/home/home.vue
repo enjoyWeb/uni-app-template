@@ -7,6 +7,8 @@
 </template>
 
 <script>
+import { sha256 } from 'js-sha256'
+
 export default {
 	data() {
 		return {
@@ -17,13 +19,35 @@ export default {
 		
 	},
 	onShow() {
-		
+		this.httpTest()
 	},
 	//方法
 	methods: {
 		onPageJump(url) {
 			uni.navigateTo({
 				url: url
+			});
+		},
+		httpTest() {
+			var time = Math.round(new Date().getTime()/1000).toString();
+			var params={
+			    'accessKey':'11111',
+			    'secretKey':'22222',
+			    'timestamp':time,
+			};
+			var str=""
+			//忽略了排序
+			for(var i in params){
+				str+=i+params[i]
+			}
+			var sign = sha256(str) //要加密的密码
+			//请求数据
+			this.$http.post(
+				`demo/index/index/?accessKey=11111&secretKey=22222&timestamp=${time}&sign=${sign}`,
+				{},
+				{ load: false },
+			).then(data => {
+				console.log(data)
 			});
 		}
 	},
