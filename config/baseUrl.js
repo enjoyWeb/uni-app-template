@@ -10,8 +10,8 @@ if (process.env.NODE_ENV === 'development') {
 	socketUrl = "ws://localhost:8001/";
 }
 const courtConfig = {
-	accessKey: '11111',
-	secretKey: '22222',
+	accessKey: 'yugan_admin',
+	secretKey: 'lrq_xse!dsfaew',
 	//微信小程序appid=
 	//微信公众号APPID
 	publicAppId: "",

@@ -30,7 +30,7 @@ export default {
 			//请求数据
 			this.$http.post(
 				`demo/index/index/`,
-				{},
+				{ test: '111' },
 				{ load: false },
 			).then(data => {
 				console.log(data)
