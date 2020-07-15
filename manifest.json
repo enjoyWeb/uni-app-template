@@ -92,25 +92,25 @@
                 "enable" : true
             }
         },
-		"devServer": {
-			"port" : 8080, //端口号
-			"disableHostCheck" : true,
-			"proxy": {
-				"/demo": {
-					"target" : "http://ygapi.5kafa.com/demo", //目标接口域名
-					"changeOrigin" : true,  //是否跨域
-					"secure" : false,  // 设置支持https协议的代理
-					"pathRewrite": {
-						"^/demo": ""
-					}
-				}
-			}
-		}
+        "devServer" : {
+            "port" : 8080, //端口号
+            "disableHostCheck" : true,
+            "proxy" : {
+                "/demo" : {
+                    "target" : "http://ygapi.5kafa.com/demo", //目标接口域名
+                    "changeOrigin" : true, //是否跨域
+                    "secure" : false, // 设置支持https协议的代理
+                    "pathRewrite" : {
+                        "^/demo" : ""
+                    }
+                }
+            }
+        }
     },
     "quickapp-webview" : {
         "icon" : "static/logo.png",
         "package" : "com.template.demo",
-        "minPlatformVersion" : 1010,
+        "minPlatformVersion" : 1070,
         "versionName" : "1.0",
         "versionCode" : 1
     }
